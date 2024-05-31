@@ -13,9 +13,9 @@ public:
                     check = false;
                 }
                 else
-                n2 = it.first;
+                return {n1,it.first};
             }
         }
-        return {n1,n2};
+        return {};
     }
 };
