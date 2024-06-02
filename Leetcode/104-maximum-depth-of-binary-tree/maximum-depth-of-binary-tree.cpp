@@ -12,19 +12,16 @@
 class Solution {
 public:
     int maxi = 0;
-    void findepth(TreeNode* node,int cnt){
+    int findepth(TreeNode* node,int cnt){
         if(node == NULL){
             maxi = max(maxi,cnt);
-            return;
+            return maxi;
         }
-        findepth(node->left,cnt+1);
-        findepth(node->right,cnt+1);
+        return max(findepth(node->left,cnt+1),findepth(node->right,cnt+1));
     }
     int maxDepth(TreeNode* root) {
         if(root == NULL)
         return 0;
-        if(root)
-        findepth(root,0);
-        return maxi;
+        return findepth(root,0);
     }
 };
