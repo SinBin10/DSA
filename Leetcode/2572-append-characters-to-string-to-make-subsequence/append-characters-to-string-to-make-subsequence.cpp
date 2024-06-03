@@ -16,6 +16,9 @@ public:
                 ++j;
             }
             if(j == s.length()){
+                if(c == t)
+                append = 0;
+                else
                 if(t[i] == s[s.length()-1])
                 append+=t.length()-(i+1);
                 else
@@ -24,8 +27,6 @@ public:
             }
             ++i;
         }
-        if(c == t)
-        append = 0;
         return append;
     }
 };
