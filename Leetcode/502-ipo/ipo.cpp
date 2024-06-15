@@ -6,8 +6,6 @@ public:
             ans.push_back({capital[i],profits[i]});
         }
         sort(ans.begin(),ans.end());
-        for(int i = 0;i<ans.size();i++)
-        cout<<ans[i].first<<" "<<ans[i].second<<endl;
         priority_queue<int> pq;
         int i = 0;
         while(k--){
