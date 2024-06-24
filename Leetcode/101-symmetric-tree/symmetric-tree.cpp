@@ -11,22 +11,28 @@
  */
 class Solution {
 public:
-    bool check(TreeNode* goingleft, TreeNode* goingright){
-        if(goingleft==NULL && goingright == NULL)
-        return true;
-        if(goingleft == NULL || goingright == NULL)
-        return false;
-        if(goingleft->val!=goingright->val)
-        return false;
-        if(check(goingleft->left,goingright->right) == false || check(goingleft->right,goingright->left) == false)
-        return false;
-        else
-        return true;
-    }
     bool isSymmetric(TreeNode* root) {
-        TreeNode* goingleft = root;
-        TreeNode* goingright = root;
-        return check(goingleft,goingright);
-        
+        if(root == NULL)
+        return true;
+        stack<TreeNode*> st;
+        st.push(root->right);
+        st.push(root->left);
+        while(!st.empty()){
+            TreeNode* node1 = st.top();
+            st.pop();
+            TreeNode* node2 = st.top();
+            st.pop();
+            if(node1 == NULL && node2 == NULL)
+            continue;
+            if(node1 == NULL || node2 == NULL)
+            return false;
+            if(node1->val != node2->val)
+            return false;
+            st.push(node1->left);
+            st.push(node2->right);
+            st.push(node1->right);
+            st.push(node2->left);
+        }
+        return true;
     }
 };
