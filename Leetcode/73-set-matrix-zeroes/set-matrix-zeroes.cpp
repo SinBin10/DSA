@@ -1,26 +1,34 @@
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
-        int row = matrix.size();
-        int col = matrix[0].size();
-        vector<vector<bool>> v(row,vector<bool>(col,true));
-        for(int i = 0;i<row;i++){
-            for(int j = 0;j<col;j++){
+        vector<vector<bool>> boolean(matrix.size(),vector<bool> (matrix[0].size(),true));
+        for(int i = 0;i<boolean.size();i++){
+            for(int j = 0;j<boolean[0].size();j++){
                 if(matrix[i][j] == 0)
-                v[i][j] = false;
+                boolean[i][j] = 0;
             }
         }
-        for(int i = 0;i<row;i++){
-            for(int j = 0;j<col;j++){
-                if(matrix[i][j] == 0 && v[i][j] == false){
-                    for(int k = 0;k<row;k++){
-                        matrix[k][j] = 0;
+        for(int i = 0;i<matrix.size();i++){
+            for(int j = 0;j<matrix[0].size();j++){
+                if(matrix[i][j] == 0 && boolean[i][j] == 0){
+                    int row = 0;
+                    int col = 0;
+                    while(row<matrix.size()){
+                        matrix[row][j] = 0;
+                        ++row;
                     }
-                    for(int k = 0;k<col;k++){
-                        matrix[i][k] = 0;
+                    while(col<matrix[0].size()){
+                        matrix[i][col] = 0;
+                        ++col;
                     }
                 }
             }
         }
+        // for(int i = 0;i<boolean.size();i++){
+        //     for(int j = 0;j<boolean[0].size();j++){
+        //         cout<<matrix[i][j]<<",";
+        //     }
+        //     cout<<endl;
+        // }
     }
 };
